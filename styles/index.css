@@ -1,0 +1,51 @@
+body {
+    color: #e84622;
+    font-family: 'NeueMachina', Helvetica, sans-serif;
+}
+
+.title-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin-bottom: 0;
+}
+.title-char-arnaldo {
+    font-family: 'Arnaldo', Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: clamp(4rem, 8vw, 11rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    font-weight: 400;
+    margin: 0;
+}
+.title-char-machina {
+    font-family: 'NeueMachina', Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: clamp(4rem, 10vw, 11rem);
+    line-height: 0.30;
+    letter-spacing: -0.05em;
+    font-weight: 400;
+    margin: 0;
+}
+
+.title {
+    font-size: clamp(4rem, 10vw, 11rem);
+    line-height: 0.30;
+    letter-spacing: -0.05em;
+    font-weight: 400;
+}
+
+#hero-buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin-top: 30px;
+    gap: 10px;
+    margin-left: 30px;
+}
+
+ 
+.home-img {
+  display: block;
+  margin-top: 60px;
+}
