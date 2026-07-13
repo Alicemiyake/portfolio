@@ -45,75 +45,98 @@ nav {
 
 /* PROJECT SECTIONS */
 
+/* 10-column grid, capped at 80% of the viewport width */
+.projects-grid {
+  width: 80vw;
+  max-width: 80vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-auto-flow: row;
+  column-gap: 2vw;
+  /* generous, viewport-independent minimum so the parallax clamp in
+     scripts/parallax.js always has enough room to work with */
+  row-gap: clamp(140px, 14vh, 240px);
+  padding: 14vh 0 16vh;
+}
+
+/* Each project is one "stack": image + info together. The whole stack
+   gets the parallax transform (like arnaudpaquier.com/1_rocks), so the
+   caption travels with its image instead of staying put. Six slots with
+   different column spans/offsets/alignments/aspect-ratios give every
+   project a different size and position, echoing that reference's
+   push/span column system; the pattern repeats every 6 projects. */
 .project-section {
   position: relative;
-  min-height: 140vh;
   display: block;
-  padding: 10vh 4vw;
-  align-items: start;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  color: inherit;
+  text-decoration: none;
 }
 
-
-
-.project-section.reverse {
-  grid-template-columns: 1.3fr 0.7fr;
+/* No explicit grid-row: the browser auto-places each item into the next
+   free row based on column occupancy, so the pattern can repeat via the
+   same slot classes without every repeat landing on the same row. */
+.project-section.slot-a {
+  grid-column: 1 / 7;
+  justify-self: start;
+  align-self: start;
 }
 
-.project-section.reverse .project-image-wrap {
-  order: 2;
+.project-section.slot-b {
+  grid-column: 2 / 6;
+  justify-self: start;
+  align-self: start;
 }
 
-.project-section.reverse .project-info {
-  order: 1;
+.project-section.slot-c {
+  grid-column: 7 / 11;
+  justify-self: end;
+  align-self: end;
 }
+
+.project-section.slot-d {
+  grid-column: 5 / 10;
+  justify-self: end;
+  align-self: start;
+}
+
+.project-section.slot-e {
+  grid-column: 1 / 4;
+  justify-self: start;
+  align-self: end;
+}
+
+.project-section.slot-f {
+  grid-column: 5 / 10;
+  justify-self: end;
+  align-self: start;
+}
+
+.slot-a .project-image-wrap { aspect-ratio: 3 / 4; }
+.slot-b .project-image-wrap { aspect-ratio: 4 / 5; }
+.slot-c .project-image-wrap { aspect-ratio: 1 / 1; }
+.slot-d .project-image-wrap { aspect-ratio: 16 / 10; }
+.slot-e .project-image-wrap { aspect-ratio: 1 / 1; }
+.slot-f .project-image-wrap { aspect-ratio: 3 / 4; }
 
 .project-image-wrap {
-  position: sticky;
-  top: 12vh;
-  height: 76vh;
-  overflow: hidden;
+  position: relative;
+  width: 100%;
   border-radius: 0;
 }
 
 .project-image-wrap img {
+  display: block;
   width: 100%;
-  height: 120%;
+  height: 100%;
   object-fit: cover;
-  display: block;
-  will-change: transform;
-}
-
-.project-section:first-of-type .project-image-wrap {
-  width: 40%;
-  margin-left: 0;
-  margin-right: auto;
-}
-
-.project-section:nth-of-type(2) {
-  display: block;
-  padding-top: 0;
-  margin-top: -60vh;
-}
-
-.project-section:nth-of-type(2) .project-image-wrap {
-  width: 40%;
-  margin-left: auto;
-  margin-right: 0;
-}
-
-.project-section:nth-of-type(2) .project-info {
-  position: relative;
-  top: auto;
-  padding-top: 24px;
-  max-width: 420px;
-  margin-left: auto;
-  margin-right: 0;
 }
 
 .project-info {
   position: relative;
-  top: auto;
-  padding-top: 24px;
+  padding-top: 20px;
   max-width: 420px;
 }
 
@@ -201,23 +224,24 @@ footer a {
     padding: 24vw 20px 40px;
   }
 
-  .project-section,
-  .project-section.reverse {
+  /* mobile is not a priority right now - just a basic, functional fallback */
+  .projects-grid {
+    width: 100%;
+    max-width: 100%;
     display: block;
-    min-height: auto;
-    padding: 80px 20px;
+    padding: 12vh 20px 10vh;
   }
 
-  .project-section.reverse .project-image-wrap,
-  .project-section.reverse .project-info {
-    order: initial;
+  .project-section {
+    grid-column: auto;
+    justify-self: auto;
+    align-self: auto;
+    margin-bottom: 64px;
+    transform: none !important;
   }
 
   .project-image-wrap {
-    position: relative;
-    top: auto;
-    height: 65vh;
-    margin-bottom: 32px;
+    aspect-ratio: 4 / 5;
   }
 
   .project-info {
