@@ -1,0 +1,947 @@
+/* =========================================================
+   BASE
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --page-margin: 3.17vw;
+
+    --background: #121214;
+    --orange: #FF5A23;
+    --blue: #00E5FF;
+
+    /* MOBILE */
+    --mobile-margin: 16px;
+    --mobile-column-gap: 12px;
+    --mobile-row-gap: 70px;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+
+    background: var(--background);
+}
+
+body {
+    color: var(--orange);
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    line-height: 1.05;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+    position: fixed;
+
+    top: 9px;
+    left: var(--page-margin);
+    right: var(--page-margin);
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+
+    align-items: start;
+
+    z-index: 1000;
+
+    font-size: clamp(10px, 0.70vw, 15px);
+    line-height: 1;
+
+    text-transform: uppercase;
+}
+
+.header .logo {
+    justify-self: start;
+}
+
+.header .mail {
+    justify-self: center;
+}
+
+.header .about,
+.header .projects {
+    justify-self: end;
+}
+
+.header a {
+    position: relative;
+
+    color: var(--orange);
+
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition: color 0.15s ease;
+}
+
+
+/*
+Tutti gli elementi dell'header
+diventano azzurri in hover:
+- logo
+- mail
+- about
+- projects
+*/
+
+.header a:hover {
+    color: var(--blue);
+    opacity: 1;
+}
+
+
+/*
+Anche l'eventuale parte grigia creata
+dal sistema di overlap diventa azzurra
+quando passi sopra al link.
+*/
+
+.header a:hover .header-overlap-slice {
+    color: var(--blue);
+}
+
+/* =========================================================
+   HEADER — PARTIAL OVERLAP
+========================================================= */
+
+/*
+Copia grigia dell'header generata dal JavaScript.
+
+Il JS utilizza clip-path per mostrare solamente
+la porzione che fisicamente si sovrappone
+a immagini/video/testi.
+*/
+
+.header-overlap-slice {
+    position: absolute;
+
+    inset: 0;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    color: #858585;
+
+    font: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+
+    white-space: nowrap;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   PORTFOLIO — DESKTOP
+========================================================= */
+
+.portfolio {
+    position: relative;
+
+    width: 100%;
+    height: 195vw;
+
+    background: var(--background);
+}
+
+
+/* =========================================================
+   PROJECT
+========================================================= */
+
+.project {
+    position: absolute;
+
+    z-index: 1;
+}
+
+.project-motion {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    will-change: transform;
+}
+
+
+/* =========================================================
+   PROJECT MEDIA — HOMEPAGE
+========================================================= */
+
+.project-visual {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background: #d9d9d9;
+
+    z-index: 1;
+}
+
+
+/*
+Nella homepage foto e video sono sovrapposti.
+Il JavaScript mostra solamente quello attivo.
+*/
+
+.project-visual > img,
+.project-visual > video {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: none;
+
+    pointer-events: none;
+}
+
+.project-visual > img.is-active,
+.project-visual > video.is-active {
+    display: block;
+}
+
+
+/* =========================================================
+   PROJECT TEXT
+========================================================= */
+
+.project-info {
+    position: absolute;
+
+    top: calc(100% + 0.9vw);
+    left: 0;
+
+    width: max-content;
+    max-width: 38vw;
+
+    font-size: clamp(10px, 0.75vw, 16px);
+    line-height: 1.05;
+    font-weight: 400;
+
+    color: var(--orange);
+
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+.project-info {
+    transition: color 0.15s ease;
+}
+
+.project-info:hover {
+    color: var(--blue);
+}
+
+/* =========================================================
+   DESKTOP PROJECT POSITIONS
+========================================================= */
+
+
+/* 01 SOEMA */
+
+.project-01 {
+    left: var(--page-margin);
+    top: 10.20vw;
+
+    width: 30.5vw;
+    height: 40.38vw;
+}
+
+
+/* 02 UNDECLARED */
+
+.project-02 {
+    left: 35vw;
+    top: 9.50vw;
+
+    width: 30.5vw;
+    height: 40.38vw;
+}
+
+
+/* 03 SCIT */
+
+.project-03 {
+    right: var(--page-margin);
+    top: 10vw;
+
+    width: 30.5vw;
+    height: 40.38vw;
+}
+
+
+/* 04 METROPOLITANA */
+
+.project-04 {
+    left: var(--page-margin);
+    top: 67.61vw;
+
+    width: 28.24vw;
+    height: 40.38vw;
+}
+
+
+/* 05 OMINO DEL SONNO */
+
+.project-05 {
+    right: var(--page-margin);
+    top: 70vw;
+
+    width: 60.18vw;
+    height: 38.38vw;
+
+    z-index: 4;
+}
+
+
+/* 06 TYPOGRAPHY */
+
+.project-06 {
+    left: 12.11vw;
+    top: 108.10vw;
+
+    width: 28.24vw;
+    height: 40.38vw;
+
+    z-index: 2;
+}
+
+
+/* 07 RISCOPRENDO IL FEMMINILE */
+
+.project-07 {
+    left: 48.11vw;
+    top: 115.50vw;
+
+    width: 40.87vw;
+    height: 32.51vw;
+
+    z-index: 3;
+}
+
+
+.project:hover {
+    z-index: 20;
+}
+
+
+/* =========================================================
+   ABOUT PAGE
+========================================================= */
+
+.about-page {
+    min-height: 100vh;
+
+    background: var(--background);
+    color: var(--orange);
+}
+
+.about-content {
+    width: 100%;
+    min-height: 100vh;
+
+    padding:
+        9vw
+        var(--page-margin)
+        6vw;
+}
+
+.about-block {
+    width: 40vw;
+
+    font-size: clamp(11px, 0.85vw, 18px);
+    line-height: 1.05;
+
+    margin-bottom: 1.6vw;
+}
+
+.about-intro {
+    margin-bottom: 1.8vw;
+}
+
+.about-block h2 {
+    font-size: inherit;
+    line-height: inherit;
+
+    font-weight: 400;
+
+    /* una riga vuota dopo Education / Jobs */
+    margin: 0 0 1.05em;
+}
+
+.about-block p {
+    margin: 0;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .about-content {
+        padding-top: 90px;
+    }
+
+    .about-block {
+        width: 60vw;
+
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE HOMEPAGE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    /* -----------------------------------------------------
+       HEADER
+    ----------------------------------------------------- */
+
+    .header {
+        top: 12px;
+
+        left: var(--mobile-margin);
+        right: var(--mobile-margin);
+
+        font-size: 8px;
+    }
+
+
+    /* -----------------------------------------------------
+       PORTFOLIO GRID
+    ----------------------------------------------------- */
+
+    .portfolio {
+        width: 100%;
+
+        height: auto;
+        min-height: 100vh;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        column-gap: var(--mobile-column-gap);
+        row-gap: var(--mobile-row-gap);
+
+        padding:
+            90px
+            var(--mobile-margin)
+            100px;
+    }
+
+
+    /* -----------------------------------------------------
+       RESET DESKTOP POSITIONS
+    ----------------------------------------------------- */
+
+    .project {
+        position: relative;
+
+        top: auto;
+        right: auto;
+        bottom: auto;
+        left: auto;
+
+        width: 100%;
+        height: auto;
+
+        margin: 0;
+
+        z-index: 1;
+    }
+
+
+    /* -----------------------------------------------------
+       PARALLAX
+    ----------------------------------------------------- */
+
+    .project-motion {
+        width: 100%;
+        height: auto;
+
+        will-change: transform;
+    }
+
+
+    /* -----------------------------------------------------
+       PROJECT MEDIA
+    ----------------------------------------------------- */
+
+    .project-visual {
+        width: 100%;
+        height: auto;
+
+        aspect-ratio: 3 / 4;
+    }
+
+
+    /* -----------------------------------------------------
+       PROJECT TEXT
+    ----------------------------------------------------- */
+
+    .project-info {
+        position: relative;
+
+        top: auto;
+        left: auto;
+
+        width: 100%;
+        max-width: none;
+
+        margin-top: 7px;
+
+        font-size: 9px;
+
+        color: var(--orange);
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE PROJECT POSITIONS
+    ----------------------------------------------------- */
+
+    .project-01 {
+        margin-top: -30px;
+    }
+
+    .project-02 {
+        margin-top: 10px;
+    }
+
+    .project-03 {
+        margin-top: 10px;
+    }
+
+    .project-04 {
+        margin-top: -50px;
+    }
+
+
+    /* OMINO OCCUPA ENTRAMBE LE COLONNE */
+
+    .project-05 {
+        grid-column: 1 / -1;
+
+        width: 100%;
+
+        margin-top: 0;
+    }
+
+    .project-05 .project-visual {
+        aspect-ratio: 16 / 10;
+    }
+
+
+    .project-06 {
+        margin-top: 35px;
+    }
+
+    .project-07 {
+        margin-top: 10px;
+    }
+
+
+    /* -----------------------------------------------------
+       ABOUT MOBILE
+    ----------------------------------------------------- */
+
+    .about-content {
+        padding:
+            80px
+            var(--mobile-margin)
+            50px;
+    }
+
+    .about-block {
+        width: 100%;
+
+        font-size: 11px;
+    }
+}
+
+
+/* =========================================================
+   PROJECT DETAIL
+   NASCOSTO NELLA HOMEPAGE
+========================================================= */
+
+.project-detail {
+    display: none;
+}
+
+
+/* =========================================================
+   PROJECT DETAIL — OPEN MODE
+========================================================= */
+
+/*
+Quando un progetto viene aperto,
+il layout assoluto/grid della homepage
+viene completamente disattivato.
+*/
+
+body.project-detail-open .portfolio {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+    min-height: 100vh;
+
+    padding:
+        10vw
+        var(--page-margin)
+        6vw;
+
+    background: var(--background);
+}
+
+
+/*
+Nasconde tutti i progetti tranne
+quello selezionato.
+*/
+
+body.project-detail-open .project:not(.is-open) {
+    display: none;
+}
+
+
+/* =========================================================
+   OPEN PROJECT
+========================================================= */
+
+body.project-detail-open .project.is-open {
+    position: relative;
+
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    margin: 0;
+
+    z-index: 50;
+}
+
+
+/*
+Il parallasse viene disattivato
+nella scheda aperta.
+*/
+
+.project.is-open .project-motion {
+    width: 100%;
+    height: auto;
+
+    transform: none !important;
+}
+
+
+/*
+La piccola label della homepage sparisce.
+*/
+
+.project.is-open .project-info {
+    display: none;
+}
+
+
+/* =========================================================
+   PROJECT OPEN — CAROUSEL VIEWPORT
+========================================================= */
+
+.project.is-open .project-visual {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    /*
+    Il JS assegna questo valore prendendo
+    l'altezza originale del progetto.
+    */
+
+    height: var(--detail-visual-height);
+
+    /*
+    La fascia si muove internamente.
+    L'utente non vede scrollbar.
+    */
+
+    overflow: hidden;
+
+    aspect-ratio: auto;
+
+    background: var(--background);
+
+    scrollbar-width: none;
+}
+
+.project.is-open .project-visual::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+   DETAIL CAROUSEL — SMOOTH TRACK
+========================================================= */
+
+/*
+Questa è la vera striscia animata.
+
+Il JavaScript applica translate3d()
+a questo elemento invece di modificare
+scrollLeft.
+
+Questo rende il movimento molto più fluido.
+*/
+
+.detail-carousel-strip {
+    display: flex;
+
+    flex-wrap: nowrap;
+
+    width: max-content;
+    height: 100%;
+
+    gap: 0;
+
+    transform: translate3d(0, 0, 0);
+
+    will-change: transform;
+
+    backface-visibility: hidden;
+
+    -webkit-backface-visibility: hidden;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   MEDIA DENTRO IL CAROSELLO APERTO
+========================================================= */
+
+.detail-carousel-strip img,
+.detail-carousel-strip video {
+    position: relative;
+
+    inset: auto;
+
+    display: block !important;
+
+    flex: 0 0 auto;
+
+    width: auto;
+    height: 100%;
+
+    max-width: none;
+
+    object-fit: cover;
+
+    pointer-events: none;
+
+    backface-visibility: hidden;
+
+    -webkit-backface-visibility: hidden;
+}
+
+
+/*
+I cloni hanno esattamente lo stesso
+comportamento dei media originali.
+*/
+
+.detail-carousel-strip .carousel-clone {
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   PROJECT INFORMATION
+========================================================= */
+
+.project.is-open .project-detail {
+    display: grid;
+
+    grid-template-columns:
+        0.9fr
+        3fr
+        1.25fr
+        1.45fr;
+
+    column-gap: 3vw;
+
+    width: 100%;
+
+    padding-top: 1.4vw;
+
+    font-size: clamp(10px, 0.75vw, 16px);
+    line-height: 1.05;
+
+    color: var(--orange);
+}
+
+
+/* =========================================================
+   DETAIL DESCRIPTION
+========================================================= */
+
+.detail-description p {
+    margin: 0;
+}
+
+.detail-description p + p {
+    margin-top: 0.4em;
+}
+
+
+/* =========================================================
+   DETAIL META / EXTRA
+========================================================= */
+
+.detail-meta,
+.detail-extra {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    min-height: 14vw;
+}
+
+
+/* =========================================================
+   DETAIL LINKS
+========================================================= */
+
+.project-detail a {
+    color: var(--orange);
+
+    text-decoration: none;
+}
+
+.project-detail a:hover {
+    color: var(--blue);
+}
+
+
+/* =========================================================
+   PROJECT DETAIL — MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    body.project-detail-open .portfolio {
+        display: block;
+
+        padding:
+            80px
+            var(--mobile-margin)
+            60px;
+    }
+
+
+    body.project-detail-open .project.is-open {
+        width: 100%;
+
+        margin: 0;
+
+        grid-column: auto;
+    }
+
+
+    .project.is-open .project-visual {
+        width: 100%;
+
+        height: 60vh;
+
+        aspect-ratio: auto;
+    }
+
+
+    .project.is-open .project-detail {
+        grid-template-columns:
+            1fr
+            2fr;
+
+        gap:
+            30px
+            16px;
+
+        padding-top: 12px;
+
+        font-size: 9px;
+    }
+
+
+    .detail-meta,
+    .detail-extra {
+        min-height: 0;
+
+        gap: 30px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .project-motion {
+        transform: none !important;
+    }
+
+    .detail-carousel-strip {
+        transform: none !important;
+    }
+}
