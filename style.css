@@ -306,19 +306,19 @@ Il JavaScript mostra solamente quello attivo.
     left: var(--page-margin);
     top: 67.61vw;
 
-    width: 28.24vw;
-    height: 40.38vw;
+    width: 18.24vw;
+    height: 30.38vw;
 }
 
 
 /* 05 OMINO DEL SONNO */
 
 .project-05 {
-    right: var(--page-margin);
+    right: 15vw;
     top: 70vw;
 
-    width: 60.18vw;
-    height: 38.38vw;
+    width: 50.18vw;
+    height: 30.38vw;
 
     z-index: 4;
 }
@@ -330,8 +330,8 @@ Il JavaScript mostra solamente quello attivo.
     left: 12.11vw;
     top: 108.10vw;
 
-    width: 28.24vw;
-    height: 40.38vw;
+    width: 22.24vw;
+    height: 30.38vw;
 
     z-index: 2;
 }
